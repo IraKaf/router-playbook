@@ -1,7 +1,5 @@
 ---
 - name: Configuration
-  hosts: routers
-  user: admin
   gather_facts: false
   tasks:
 
