@@ -1,0 +1,24 @@
+---
+- name: get info
+  hosts: routers
+  user: admin
+  gather_facts: false
+  ignore_errors: true
+  tasks:
+    - name: gather full device info
+      routeros_facts:
+        gather_subset: all
+      register: device_info
+    - name: copy decice info
+      copy:
+        content: "{{ device_info }}"
+        dest: /etc/ansible/{{ config_device_filename }}.json
+    - name: gather OSPF info
+      routeros_facts:
+        gather_subset:
+          - routing
+      register: ospf_info
+    - name: copy OSPF info
+      copy:
+        content: "{{ ospf_info['ansible_facts']['ansible_net_ospf_instance']}}"
+        dest: /etc/ansible/{{ config_ospf_filename }}.json
