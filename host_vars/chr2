@@ -1,0 +1,7 @@
+user_name: second
+user_pass: second
+router_id: 2.2.2.2
+ospf_name: ospf_lab
+file_name: chr2_info
+config_ospf_filename: chruser_ospf_conf
+config_device_filename: chruser_device_conf

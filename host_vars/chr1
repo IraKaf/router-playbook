@@ -1,0 +1,7 @@
+user_name: first
+user_pass: first
+router_id: 1.1.1.1
+ospf_name: ospf_lab
+file_name: chr1_info
+config_ospf_filename: chruser_ospf_conf
+config_device_filename: chruser_device_conf

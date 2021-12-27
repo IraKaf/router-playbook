@@ -1,0 +1,24 @@
+---
+- name: Configuration
+  hosts: routers
+  user: admin
+  gather_facts: false
+  tasks:
+
+  - name: Groups
+    community.routeros.command:
+      commands: /user group add name=lab policy=ssh,read,test
+
+  - name: Users
+    community.routeros.command:
+      commands: /user add name={{ user_name }} group=lab password={{ user_pass }}
+
+  - name: NTP
+    community.routeros.command:
+      commands: /system ntp client set enabled=yes server-dns-names=0.ru.pool.ntp.org,1.ru.pool.ntp.org
+
+  - name: OSPF
+    community.routeros.command:
+      commands:
+        - /routing ospf instance add name={{ ospf_name }} router-id={{ router_id }}
+        - /routing ospf network add network=172.16.36.0/24 area=backbone
