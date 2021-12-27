@@ -1,6 +1,6 @@
 ---
 - name: get info
-  hosts: routers
+  hosts: all
   user: admin
   gather_facts: false
   ignore_errors: true
